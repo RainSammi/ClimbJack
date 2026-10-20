@@ -1,0 +1,242 @@
+:root{--paper:#faf5d9;--ink:#443522;--green:#456e42;--green2:#82a569;--cream:#fff9e6;--cover:#57764d;--gold:#e3c685;--shadow:rgba(55,39,21,.2)}*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Georgia,'Noto Serif TC','Microsoft JhengHei',serif;color:var(--ink);background:var(--paper)}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid #c28a33;outline-offset:5px}.app{min-height:100svh;overflow:hidden;position:relative;background:radial-gradient(ellipse at 50% 57%,#fffbe9 0%,#faf5d9 75%)}.start-screen{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;flex-direction:column;background:var(--paper);transition:opacity .6s,visibility .6s}.start-screen.hidden{opacity:0;visibility:hidden;pointer-events:none}.start-decoration{color:#b5a573;font-size:27px;letter-spacing:15px;margin-bottom:29px}.start-button{border:3px solid var(--ink);border-radius:55px;background:#fff8db;color:var(--ink);font-size:clamp(32px,5vw,61px);font-weight:bold;letter-spacing:8px;padding:18px 77px;box-shadow:7px 9px 0 #d8d1a8;animation:pulse 2.3s infinite;transition:transform .25s,background .25s}.start-button:hover{background:#e7efcf;transform:translateY(-4px)}.start-button span{display:block;font-size:13px;letter-spacing:4px;margin-top:5px;font-weight:normal}.start-caption{font-size:12px;letter-spacing:3px;color:#918367;margin-top:40px}@keyframes pulse{50%{box-shadow:7px 9px 0 #d8d1a8,0 0 0 12px rgba(121,163,100,.09)}}.world{position:fixed;inset:0;pointer-events:none;z-index:1}.vine-scene{width:100%;height:100%;overflow:visible}.vine-trunk,.vine-branch{fill:none;stroke:var(--green);stroke-width:16;stroke-linecap:round;stroke-linejoin:round;filter:drop-shadow(2px 3px 0 #a0b77c)}.vine-trunk{stroke-dasharray:1100;stroke-dashoffset:1100}.vine-branch{stroke-width:12;stroke-dasharray:650;stroke-dashoffset:650}.world.growing .vine-trunk{animation:grow 1.75s ease-in-out forwards}.world.growing .vine-branch{animation:grow .9s ease-in-out 1.65s forwards}.leaves ellipse{fill:#8db572;stroke:#557b46;stroke-width:5;transform-box:fill-box;transform-origin:center;opacity:0}.world.growing .leaves ellipse{animation:leaf .45s ease-out forwards}.world.growing .leaves ellipse:nth-child(1){animation-delay:.32s}.world.growing .leaves ellipse:nth-child(2){animation-delay:.6s}.world.growing .leaves ellipse:nth-child(3){animation-delay:.85s}.world.growing .leaves ellipse:nth-child(4){animation-delay:1.13s}.world.growing .leaves ellipse:nth-child(5){animation-delay:1.38s}.world.growing .leaves ellipse:nth-child(6){animation-delay:1.63s}@keyframes grow{to{stroke-dashoffset:0}}@keyframes leaf{from{opacity:0;scale:.1}to{opacity:1;scale:1}}.top-nav{position:relative;z-index:7;display:flex;align-items:center;justify-content:space-between;gap:22px;min-height:94px;padding:12px clamp(24px,6vw,90px);opacity:0;transform:translateY(-22px);transition:opacity .6s,transform .6s;pointer-events:none}.top-nav.visible{opacity:1;transform:none;pointer-events:auto}.logo{text-decoration:none;color:#47663e;font-weight:bold;font-size:clamp(17px,2.2vw,27px);white-space:nowrap;text-shadow:1px 1px #fff9e7}.logo b{color:#8b6a36}.top-nav nav{display:flex;gap:5px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.nav-item{background:#fcf8e5;border:2px solid #76926a;border-radius:24px;padding:8px 14px;color:#46643e;font-size:13px;white-space:nowrap;box-shadow:1px 3px 0 #bbcba7;transition:.2s}.nav-item:hover,.nav-item.active{background:#dce9bf;transform:translateY(-2px)}.nav-item:disabled{opacity:.52;cursor:not-allowed}.menu-toggle{display:none;background:#faf5d9;color:var(--green);border:2px solid var(--green);border-radius:8px;padding:5px 10px;font-size:22px}.story-stage{position:relative;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;max-width:1300px;min-height:calc(100svh - 128px);margin:0 auto;padding:8px 20px 28px;opacity:0;transform:translateY(30px) scale(.97);transition:opacity .8s,transform .8s;pointer-events:none}.story-stage.visible{opacity:1;transform:none;pointer-events:auto}.story-kicker{color:#9b845e;letter-spacing:5px;font-size:12px;margin:1px 0 19px}.book-shell{width:min(940px,90vw);height:clamp(365px,57vh,560px);perspective:1600px;position:relative;filter:drop-shadow(13px 24px 16px rgba(63,52,33,.18))}.book{position:relative;width:100%;height:100%;transform-style:preserve-3d}.book:before{content:'';position:absolute;inset:6px -7px -8px;background:#e5d8b6;border:3px solid #947b52;border-radius:16px 25px 25px 16px;box-shadow:0 6px 0 #a99770}.book-spine{position:absolute;left:50%;top:2%;width:18px;height:96%;transform:translateX(-50%);background:linear-gradient(90deg,#a9936a,#faf0d7 55%,#b9a17d);z-index:4;opacity:0;border-radius:18px;pointer-events:none}.book.open .book-spine{opacity:1}.book-pages{position:absolute;inset:0;display:grid;grid-template-columns:1fr 1fr;background:#fff9e8;border:5px solid #967a55;border-radius:16px 20px 20px 16px;overflow:hidden}.page{position:relative;overflow:auto;padding:clamp(16px,3vw,42px);background:linear-gradient(90deg,#f8efd7,#fffae9 12%,#fff9e9 85%,#f3e7cb);height:100%;min-width:0}.page.left{border-right:1px solid #d3bea0;background:linear-gradient(90deg,#f8efd7,#fffae9 12%,#fff9e9 88%,#e5d4b6)}.page.right{background:linear-gradient(90deg,#e9dcc0,#fff9e9 12%,#fffaf0 85%,#f1e1c4)}.page .chapter{font-size:10px;letter-spacing:3px;color:#9f8b6b;margin-bottom:14px}.page h2{font-size:clamp(20px,2.3vw,31px);margin:4px 0 8px;color:#4c6540}.page .subtitle{font-size:10px;letter-spacing:2px;color:#9e8865;margin:0 0 22px}.page p{font-size:clamp(12px,1.1vw,15px);line-height:2;letter-spacing:.4px;margin:10px 0}.page-num{position:absolute;bottom:9px;left:0;right:0;text-align:center;font-size:11px;color:#a49475}.artwork{height:70%;min-height:175px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;border:3px dashed #bdaf8d;border-radius:8px;background:repeating-linear-gradient(45deg,#eef0d7,#eef0d7 15px,#e4e8ca 15px,#e4e8ca 30px);position:relative;overflow:hidden}.artwork img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}.artwork .art-symbol{font-size:65px;filter:grayscale(.15)}.artwork .art-tag{position:absolute;left:12px;top:12px;background:#fff9e7;padding:5px 9px;border:1px solid #a5aa85;font-size:10px;letter-spacing:2px}.artwork .placeholder-label{font-size:12px;color:#77825d;letter-spacing:2px}.caption{font-size:11px!important;text-align:center;color:#968568}.art-title{font-size:clamp(16px,2vw,24px)!important;text-align:center;margin-bottom:0!important}.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:22px}.chips span{padding:7px 9px;background:#edf0d7;border:1px solid #a4b28d;border-radius:30px;font-size:10px;letter-spacing:1px}.feature{display:flex;gap:12px;border-bottom:1px dashed #ccb995;padding:8px 0;align-items:flex-start}.feature-icon{font-size:24px}.feature strong{font-size:14px;color:#547247}.feature p{font-size:12px;margin:1px 0}.member{display:flex;justify-content:space-between;gap:10px;border-bottom:1px dashed #c9b695;padding:12px 0;font-size:13px}.member span{color:#8b795a}.book-cover{position:absolute;inset:0;background:linear-gradient(115deg,#354d33,#64885a 18%,#526f4c 85%,#324e31);border:12px solid #6d8455;outline:4px solid #a18454;outline-offset:-23px;border-radius:14px 26px 26px 14px;box-shadow:inset 10px 0 22px rgba(0,0,0,.26),inset -5px 0 18px rgba(0,0,0,.2),8px 9px 0 #e0d5b3;z-index:5;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;color:#ffedbc;cursor:pointer;transition:opacity .5s,transform .9s;transform-origin:left center;backface-visibility:hidden}.book-cover.hidden{opacity:0;pointer-events:none;transform:rotateY(-110deg)}.cover-label{font-size:13px;letter-spacing:5px}.cover-icon{font-size:68px;margin:20px 0 0}.book-cover h1{font-size:clamp(45px,8vw,95px);line-height:.99;margin:8px 0 22px;text-shadow:3px 4px #263d2c}.book-cover h1 em{font-style:normal;color:#e7c97d}.book-cover p{font-size:13px;letter-spacing:3px}.cover-corner{position:absolute;font-size:32px;color:#dbbf76}.corner-tl{top:27px;left:40px}.corner-tr{top:27px;right:40px}.corner-bl{bottom:27px;left:40px}.corner-br{bottom:27px;right:40px}.turn-sheet{position:absolute;inset:0 0 0 50%;width:50%;z-index:6;pointer-events:none;transform-style:preserve-3d;transform-origin:left center;opacity:0}.turn-sheet.flip{animation:pageflip .78s ease-in-out forwards}.sheet-front,.sheet-back{position:absolute;inset:0;border:3px solid #ddcba9;background:linear-gradient(95deg,#f8efd8,#fff9eb 85%,#d8c4a3);backface-visibility:hidden;box-shadow:5px 3px 11px rgba(44,30,11,.24)}.sheet-back{transform:rotateY(180deg);background:linear-gradient(90deg,#eadbbd,#fff7e7)}@keyframes pageflip{0%{opacity:1;transform:rotateY(0)}92%{opacity:1}100%{opacity:0;transform:rotateY(-180deg)}}.reader-controls{display:flex;align-items:center;justify-content:space-between;gap:10px;width:min(940px,90vw);margin-top:22px}.page-arrow{border:2px solid #839b6c;background:#f3f1d8;color:#4e6846;border-radius:28px;min-width:130px;padding:11px 20px;transition:.2s}.page-arrow:hover:not(:disabled){background:#dce8ca;transform:translateY(-2px)}.page-arrow:disabled{opacity:.28;cursor:not-allowed}.page-indicator{font-size:12px;color:#89765a;text-align:center}.hint{font-size:12px;color:#a59678;letter-spacing:1px;margin:16px 0 0;text-align:center}.site-footer{position:relative;z-index:3;text-align:center;color:#a49677;font-size:10px;padding:0 12px 20px;letter-spacing:1px}.book .book-cover.rewind{animation:rewind .72s ease-in-out 2}@keyframes rewind{0%,100%{transform:rotateY(0)}40%{transform:rotateY(-22deg)}70%{transform:rotateY(12deg)}}@media(max-width:850px){.top-nav{min-height:76px;padding:12px 22px}.menu-toggle{display:block}.top-nav nav{display:none;position:absolute;top:66px;right:18px;left:18px;background:#fbf6df;padding:13px;border:2px solid #87a275;border-radius:12px;box-shadow:0 8px 20px #6c5f3c29;z-index:10}.top-nav nav.show{display:flex;justify-content:center}.nav-item{font-size:12px}.story-stage{min-height:calc(100svh - 110px)}.book-shell{width:min(680px,92vw);height:clamp(340px,58vh,510px)}.page{padding:18px}.artwork{min-height:150px}.cover-label{font-size:10px}.book-cover h1{font-size:clamp(42px,9vw,75px)}}@media(max-width:560px){.book-shell{height:clamp(390px,63vh,520px);width:94vw}.book-pages{grid-template-columns:1fr 1fr}.page{padding:11px 9px}.page h2{font-size:18px}.page p{font-size:11px;line-height:1.7}.page .chapter{letter-spacing:1px;font-size:8px;margin-bottom:8px}.page .subtitle{font-size:8px;letter-spacing:1px;margin-bottom:10px}.artwork{height:57%;min-height:115px}.artwork .art-symbol{font-size:40px}.artwork .placeholder-label{font-size:9px}.art-title{font-size:15px!important}.caption{font-size:9px!important}.feature{gap:4px}.feature-icon{font-size:16px}.feature strong{font-size:11px}.feature p{font-size:10px}.member{font-size:10px;padding:8px 0;flex-wrap:wrap}.cover-icon{font-size:44px}.book-cover h1{font-size:49px}.book-cover p{font-size:10px}.page-arrow{min-width:72px;padding:9px;font-size:14px}.page-arrow span{display:none}.reader-controls{width:94vw}.hint{font-size:10px}.start-button{padding:17px 47px;font-size:38px}.book-spine{width:11px}}@media(prefers-reduced-motion:reduce){.start-button{animation:none}.world.growing .vine-trunk,.world.growing .vine-branch{animation-duration:.15s}.world.growing .leaves ellipse{animation-duration:.15s}.turn-sheet.flip{animation-duration:.1s}.book .book-cover.rewind{animation:none}}
+@font-face {
+  font-family: 'Cubic11';
+  src: url('assets/fonts/Cubic_11.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ===== 版面修正版：2026-10，覆寫舊樣式 ===== */
+/* 藤蔓橫向枝條放在導覽列按鈕底下，而非穿過按鈕 */
+.top-nav {
+  width: 100%;
+  max-width: 100%;
+  min-height: 112px;
+  padding: 14px clamp(25px,5vw,94px) 32px;
+  gap: clamp(15px,2.2vw,38px);
+  justify-content: space-between;
+}
+.top-nav::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  left: clamp(18px,2vw,36px);
+  right: clamp(18px,2vw,36px);
+  bottom: 8px;
+  height: 9px;
+  border-radius: 99px;
+  background: #456e42;
+  box-shadow: 0 4px 0 #a0b77c;
+  z-index: -1;
+}
+/* Header 全寬，Logo 優先維持可讀，七個快捷按鈕在剩餘空間自適應 */
+.logo { display:flex; align-items:center; flex:0 0 auto; max-width:min(260px,24vw); min-height:45px; }
+.logo-image { display:block; max-width:100%; width:auto; height:auto; max-height:70px; object-fit:contain; }
+.logo-image[hidden], .logo-fallback[hidden] { display:none; }
+.logo-fallback { font-size:clamp(18px,2vw,29px); }
+.top-nav nav { flex:0 1 auto; min-width:0; display:flex; flex-wrap:nowrap; justify-content:flex-end; gap:clamp(5px,.65vw,12px); }
+.nav-item { padding:9px clamp(8px,1vw,17px); font-size:clamp(11px,.88vw,14px); line-height:1.4; position:relative; z-index:1; }
+/* 主舞台使用有效畫面高度，避免封面標題、提示文字互相重疊 */
+.story-stage { min-height:0; padding:14px 24px 20px; gap:0; justify-content:flex-start; }
+.story-kicker { flex:0 0 auto; margin:0 0 19px; line-height:1.5; text-align:center; }
+.book-shell { width:min(1060px,88vw); height:clamp(340px, min(54vh, 550px), 550px); flex:none; }
+.book-cover { padding:40px 48px; justify-content:center; gap:0; }
+.cover-label { font-size:clamp(10px,.9vw,14px); line-height:1.5; }
+.cover-icon { font-size:clamp(32px,4vw,60px); margin:10px 0 5px; line-height:1.1; }
+.book-cover h1 { font-size:clamp(54px,7.1vw,99px); line-height:1.08; margin:8px 0 16px; }
+.book-cover p { position:static; margin:0; padding:0 15px; line-height:1.7; }
+.reader-controls { width:min(1060px,88vw); margin-top:21px; flex:none; }
+.page-indicator { line-height:1.7; }
+.hint { margin:16px 0 0; line-height:1.7; }
+.site-footer { margin-top:4px; padding-bottom:16px; line-height:1.6; }
+@media (max-width:1100px) {
+  .top-nav { padding:13px 25px 30px; gap:10px; }
+  .logo { max-width:190px; }
+  .nav-item { font-size:11px; padding:7px 8px; }
+}
+@media (max-width:850px) {
+  .top-nav { min-height:91px; padding:10px 22px 25px; }
+  .top-nav nav { display:none; position:absolute; top:74px; right:18px; left:18px; flex-wrap:wrap; justify-content:center; }
+  .top-nav nav.show { display:flex; }
+  .logo { max-width:185px; }
+  .logo-image { max-height:50px; }
+  .menu-toggle { display:block; }
+  .story-stage { padding:14px 16px 20px; }
+  .book-shell { width:min(680px,92vw); height:clamp(320px,52vh,490px); }
+  .reader-controls { width:min(680px,92vw); }
+  .book-cover h1 { font-size:clamp(43px,8vw,77px); }
+}
+@media (max-width:560px) {
+  .top-nav { padding:12px 17px 25px; }
+  .book-shell { width:94vw; height:clamp(350px,57vh,500px); }
+  .reader-controls { width:94vw; }
+  .book-cover { padding:25px 15px; }
+  .book-cover h1 { font-size:clamp(43px,11vw,66px); }
+  .cover-icon { font-size:38px; margin:7px 0; }
+  .cover-label { letter-spacing:2px; }
+  .book-cover p { font-size:10px; letter-spacing:1px; }
+  .story-kicker { letter-spacing:3px; font-size:10px; }
+}
+@media (max-height:740px) and (min-width:851px) {
+  .top-nav { min-height:93px; padding-top:7px; padding-bottom:19px; }
+  .book-shell { height:clamp(300px, 49vh, 490px); }
+  .story-kicker { margin-bottom:10px; }
+  .cover-icon { font-size:42px; margin:5px 0; }
+  .book-cover h1 { font-size:clamp(45px,6vw,79px); margin:4px 0 9px; }
+  .reader-controls { margin-top:12px; }
+  .hint { margin-top:8px; }
+}
+
+.cover-icon img {
+  width: 80px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* ===== 2026-10-20 使用者指定調整 ===== */
+/* 導覽列改為完整色塊，不再使用細藤蔓線條 */
+.top-nav {
+  background: #e2e9cb;
+  border-bottom: 5px solid #5b7850;
+  box-shadow: 0 5px 14px rgba(55, 75, 44, .11);
+  min-height: 88px;
+  padding: 13px clamp(24px, 5vw, 90px);
+}
+.top-nav::after { content: none; }
+.top-nav nav { gap: clamp(6px, .7vw, 13px); }
+.nav-item { background: #f8f5e5; border-color: #8ba27e; }
+.nav-item:hover,.nav-item.active { background:#c6d9aa; }
+/* 生長時可見，結束就消失，不殘留在書下方 */
+.world { transition: opacity .55s ease, visibility .55s ease; }
+.world.finished { opacity: 0; visibility: hidden; }
+/* 封面中央改成同一份 logo.png，淡色底板讓深色標誌清晰 */
+.book-cover .cover-logo-title {
+  display:flex; align-items:center; justify-content:center;
+  width:min(66%, 560px); max-width:100%;
+  margin: 12px 0 18px; padding: 14px 25px;
+  background: #faf5d9; border: 3px solid #d2bb7d;
+  border-radius: 12px; box-shadow: 4px 6px 0 rgba(25,44,24,.2);
+  line-height: normal; text-shadow:none;
+}
+.cover-title-logo { display:block; max-width:100%; width:100%; height:auto; max-height:170px; object-fit:contain; }
+/* 左右翻頁控制與書本加大垂直距離，左右留更多空間 */
+.reader-controls {
+  width: min(1190px, 96vw);
+  margin-top: 43px;
+  padding: 0 10px;
+}
+.page-arrow { min-width: 150px; }
+/* 未開書前不顯示翻頁教學文字與提示 */
+.hint[hidden] { display:none !important; }
+.page-indicator:empty { visibility:hidden; }
+@media(max-width:850px) {
+  .top-nav { min-height:76px; padding:12px 22px; }
+  .top-nav nav { top:70px; }
+  .reader-controls { width:min(780px, 96vw); margin-top:32px; padding:0 5px; }
+  .book-cover .cover-logo-title { width:76%; padding:12px; }
+}
+@media(max-width:560px) {
+  .top-nav { padding:10px 17px; }
+  .reader-controls { width:98vw; margin-top:25px; padding:0 3px; }
+  .page-arrow { min-width:78px; }
+  .book-cover .cover-logo-title { width:88%; padding:10px; }
+}
+
+/* ===== 2026-10-20 寬鬆童話書版面：修正扁平與內容裁切 ===== */
+html, body { min-height:100%; }
+.app { min-height:100svh; overflow-x:hidden; overflow-y:visible; }
+.top-nav { min-height:100px; padding:17px clamp(24px,5vw,90px); }
+.story-stage {
+  width:100%; max-width:1500px; min-height:0;
+  margin:0 auto; padding:38px 24px 45px;
+  justify-content:flex-start; overflow:visible;
+}
+.story-kicker { margin:0 0 30px; font-size:13px; }
+.book-shell {
+  width:min(1180px,88vw);
+  height:auto;
+  aspect-ratio:1.84 / 1;
+  min-height:570px;
+  max-height:none;
+  flex:0 0 auto;
+}
+.book-pages { overflow:hidden; }
+.page { padding:clamp(26px,3.2vw,52px); padding-bottom:65px; overflow-y:auto; overflow-x:hidden; }
+.page .chapter { margin-bottom:25px; }
+.page h2 { margin:8px 0 16px; }
+.page .subtitle { margin-bottom:28px; }
+.page p { line-height:2.05; margin:16px 0; }
+.page-num { bottom:13px; pointer-events:none; }
+.artwork { height: min(58%, 350px); min-height:210px; }
+.art-title { margin-top:22px !important; }
+.chips { margin-top:26px; margin-bottom:20px; }
+.book-cover { padding:55px 64px; }
+.cover-icon { margin:0 0 25px; }
+.cover-icon img { width:clamp(70px,7vw,105px); image-rendering:pixelated; }
+.book-cover .cover-logo-title {
+  width:min(68%,640px); margin:0; padding:24px 38px;
+  min-height:210px;
+}
+.cover-title-logo { max-height:225px; }
+.reader-controls { width:min(1330px,96vw); margin-top:56px; padding:0 22px; }
+.hint { margin-top:25px; }
+.site-footer { padding:18px 12px 34px; }
+@media(max-width:850px) {
+  .top-nav { min-height:82px; padding:13px 22px; }
+  .story-stage { padding:32px 14px 38px; }
+  .book-shell { width:94vw; min-height:510px; aspect-ratio:1.45 / 1; }
+  .page { padding:25px 19px 60px; }
+  .artwork { min-height:170px; height:48%; }
+  .reader-controls { margin-top:44px; }
+  .book-cover .cover-logo-title { width:90%; min-height:175px; padding:16px; }
+}
+@media(max-width:560px) {
+  .story-stage { padding:25px 9px 30px; }
+  .story-kicker { font-size:10px; margin-bottom:24px; }
+  .book-shell { width:95vw; min-height:520px; aspect-ratio:auto; height:clamp(520px,80svh,680px); }
+  .page { padding:20px 12px 48px; }
+  .page .chapter { margin-bottom:15px; }
+  .page p { line-height:1.8; margin:10px 0; }
+  .artwork { height:45%; min-height:125px; }
+  .book-cover { padding:24px 16px; }
+  .cover-icon { margin:0 0 18px; }
+  .cover-icon img { width:68px; }
+  .book-cover .cover-logo-title { width:93%; min-height:130px; padding:14px; }
+  .reader-controls { margin-top:35px; padding:0 5px; }
+  .hint { margin-top:18px; }
+}
+
+.artwork.has-image .art-symbol,.artwork.has-image .placeholder-label{display:none}.artwork.has-image img{object-fit:contain}.artwork.sprite-art img{image-rendering:pixelated;width:85%;height:85%;left:7.5%;top:7.5%;object-fit:contain}.artwork.has-image .art-tag{z-index:1}
+
+/* Chapter 02: full-bleed horizontally pannable village scene, book page #3 */
+.page.panorama-page { position:relative; padding:0 !important; overflow:hidden !important; isolation:isolate; }
+.panorama-viewport { position:absolute; inset:0; overflow-x:auto; overflow-y:hidden; scrollbar-width:none; overscroll-behavior-x:contain; touch-action:pan-x; cursor:grab; user-select:none; }
+.panorama-viewport.dragging {cursor:grabbing; scroll-behavior:auto;}
+.panorama-viewport::-webkit-scrollbar {display:none;}
+.panorama-img { display:block; height:100%; width:auto; max-width:none; min-width:100%; object-fit:cover; image-rendering:pixelated; pointer-events:none; }
+.panorama-overlay {position:absolute;top:18px;left:18px;z-index:2;padding:8px 12px;background:rgba(255,249,231,.88);border:1px solid #a6936a;border-radius:5px;pointer-events:none;display:flex;flex-direction:column;gap:4px;color:#506845;box-shadow:0 2px 8px #0002;}
+.panorama-overlay span {font-size:9px;letter-spacing:2px;}
+.panorama-overlay strong {font-size:15px;}
+.panorama-arrow {position:absolute;top:50%;transform:translateY(-50%);z-index:3;background:rgba(255,249,230,.91);color:#405e39;border:2px solid #6e8c5b;border-radius:50%;height:44px;width:44px;font-size:31px;display:grid;place-items:center;line-height:1;box-shadow:0 3px 10px #0002;}
+.panorama-arrow:hover:not(:disabled) {background:#e4efcc;}
+.panorama-arrow:disabled {opacity:.28;cursor:default;}
+.panorama-prev {left:12px;}.panorama-next {right:12px;}
+.panorama-note {position:absolute;bottom:30px;left:50%;transform:translateX(-50%);white-space:nowrap;pointer-events:none;font-size:11px;letter-spacing:1px;padding:5px 12px;border-radius:20px;color:#4d6444;background:rgba(255,249,231,.86);}
+.panorama-page .page-num {z-index:2; bottom:5px; color:#4b6041; text-shadow:0 1px 3px #fff;}
+@media(max-width:560px) {.panorama-overlay {top:10px;left:8px;padding:6px;}.panorama-overlay strong{font-size:12px}.panorama-arrow{width:30px;height:36px;font-size:22px}.panorama-prev{left:3px}.panorama-next{right:3px}.panorama-note{font-size:9px;bottom:27px;}}
+
+/* 全網站統一使用 Cubic11 字體 */
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: 'Cubic11', sans-serif;
+}
+
+/* 確保書本與導覽列的文字也使用新字體 */
+body * {
+  font-family: 'Cubic11', sans-serif;
+}

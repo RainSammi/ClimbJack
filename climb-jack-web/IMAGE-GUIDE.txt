@@ -1,0 +1,4 @@
+已放入：intro-cutscene.png 過場圖；village-scene.png 村莊；jack-idle.gif 傑克角色；world-beanstalk.png 藤蔓插畫。
+尚待補：gameplay 正式遊玩截圖；development 開發截圖。
+圖片路徑請在 content.js 的 image 欄位編輯。
+團隊分工參考企劃書簡化，請公開前確認。
