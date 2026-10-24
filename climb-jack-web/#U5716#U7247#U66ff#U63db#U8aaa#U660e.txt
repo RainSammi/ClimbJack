@@ -1,0 +1,13 @@
+《Climb! Jack!》圖片替換對照表
+
+書本內頁圖片位於 assets 資料夾：
+1.png  遊戲簡介／過場圖
+2.png  故事背景／村莊長卷（建議使用寬幅圖片；支援左右滑動）
+3.png  玩法特色／遊戲畫面（目前為待補圖片）
+4.png  人物介紹／傑克角色（由原始 jack-idle.gif 首幀轉成靜態 PNG；原 GIF 保留）
+5.png  關卡場景／藤蔓過場圖
+6.png  製作過程／開發截圖（目前為待補圖片）
+
+更換方式：直接把新圖命名成相同的 1.png、2.png 等，覆蓋 assets 裡的檔案。
+如果希望人物介紹恢復動態，請在 content.js 把 assets/4.png 改為 assets/jack-idle.gif。
+logo.png、cover-icon.png 等網頁固定素材不變。

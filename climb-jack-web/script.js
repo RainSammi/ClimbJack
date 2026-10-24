@@ -27,7 +27,17 @@
         <div class="page-num">— ${number} —</div>
       </article>`;
     }
-    if (data.type === 'image') {
+    if (data.type === 'gallery') {
+      const images = data.images || [];
+      const label = (data.labels && data.labels[0]) || '';
+      inner += `<div class="artwork gallery-artwork${data.pixel ? ' gallery-pixel' : ''}" data-gallery="true" tabindex="0" aria-label="${attr(data.title)}，可左右切換圖片">
+        ${images.map((src, i) => `<img class="gallery-image${i === 0 ? ' is-active' : ''}" src="${attr(src)}" alt="${attr(data.title)} 第 ${i+1} 張" draggable="false" loading="lazy" onerror="this.classList.add('gallery-missing')">`).join('')}
+        <span class="art-tag">${escapeHTML(data.tag || '')}</span>
+        <button class="gallery-arrow gallery-prev" type="button" aria-label="上一張圖片">‹</button>
+        <button class="gallery-arrow gallery-next" type="button" aria-label="下一張圖片">›</button>
+        <span class="gallery-counter" aria-live="polite">1 / ${images.length}${label ? ` · ${escapeHTML(label)}` : ''}</span>
+      </div><h2 class="art-title">${escapeHTML(data.title)}</h2><p class="caption">${escapeHTML(data.caption)}</p>`;
+    } else if (data.type === 'image') {
       const image = data.image ? `<img src="${attr(data.image)}" alt="${attr(data.title)}" onerror="this.style.display='none'">` : '';
       inner += `<div class="artwork${data.image ? ' has-image' : ''}${data.image && data.image.endsWith('.gif') ? ' sprite-art' : ''}">${image}<span class="art-tag">${escapeHTML(data.tag)}</span><div class="art-symbol" aria-hidden="true">🌿</div><span class="placeholder-label">IMAGE PLACEHOLDER</span></div><h2 class="art-title">${escapeHTML(data.title)}</h2><p class="caption">${escapeHTML(data.caption)}</p>`;
     } else {
@@ -78,10 +88,37 @@
     });
   }
 
+  function setupGalleries() {
+    const spread = content[state.index];
+    pages.querySelectorAll('[data-gallery]').forEach(box => {
+      const imgs = [...box.querySelectorAll('.gallery-image')];
+      const data = box.closest('.page').classList.contains('left') ? spread.left : spread.right;
+      const labels = data.labels || [];
+      const counter = box.querySelector('.gallery-counter');
+      let current = 0;
+      const show = (n) => {
+        current = (n + imgs.length) % imgs.length;
+        imgs.forEach((img, i) => img.classList.toggle('is-active', i === current));
+        counter.textContent = `${current + 1} / ${imgs.length}${labels[current] ? ' · ' + labels[current] : ''}`;
+      };
+      box.querySelector('.gallery-prev').addEventListener('click', e => {e.stopPropagation(); show(current - 1);});
+      box.querySelector('.gallery-next').addEventListener('click', e => {e.stopPropagation(); show(current + 1);});
+      box.addEventListener('keydown', e => { if (['ArrowLeft','ArrowRight'].includes(e.key)) {e.preventDefault();e.stopPropagation();show(current + (e.key === 'ArrowRight' ? 1 : -1));} });
+      let downX = null;
+      box.addEventListener('touchstart', e => {downX = e.changedTouches[0].clientX;}, {passive:true});
+      box.addEventListener('touchend', e => {if(downX !== null) {const diff=e.changedTouches[0].clientX-downX;if(Math.abs(diff)>35) show(current+(diff<0?1:-1));downX=null;}}, {passive:true});
+      // 桌面拖曳也能換圖，點擊控制按鈕不受影響。
+      let dragX = null;
+      box.addEventListener('pointerdown', e => {if(e.pointerType === 'mouse' && !e.target.closest('button')) dragX=e.clientX;});
+      box.addEventListener('pointerup', e => {if(dragX !== null) {const diff=e.clientX-dragX;if(Math.abs(diff)>45) show(current+(diff<0?1:-1));dragX=null;} });
+    });
+  }
+
   function render() {
     const spread = content[state.index];
     pages.innerHTML = renderSide(spread.left, 'left', spread.chapter, state.index * 2 + 1) + renderSide(spread.right, 'right', spread.chapter, state.index * 2 + 2);
     setupPanoramas();
+    setupGalleries();
     $('pageIndicator').textContent = state.opened ? `${state.index * 2 + 1} — ${state.index * 2 + 2} / ${content.length * 2}` : '';
     prev.disabled = !state.opened || state.index === 0 || state.busy;
     next.disabled = !state.ready || state.busy || (state.opened && state.index === content.length - 1);
@@ -151,7 +188,7 @@
     await wait(650);
     $('storyStage').classList.add('visible');
     await wait(600);
-    // 開場書頁倒帶／翻回封面的示意動畫：封面短暫前後翻轉。
+    // 封面閱讀提示：只做輕微浮動與提亮，不掀頁、不顯示尚未開啟的內頁。
     cover.classList.add('rewind');
     await wait(1550);
     cover.classList.remove('rewind');
@@ -179,14 +216,14 @@
   });
   document.addEventListener('keydown', (e) => {
     if (!state.ready) return;
-    if (e.target.closest?.('.panorama-viewport')) return;
+    if (e.target.closest?.('.panorama-viewport, [data-gallery]')) return;
     if (e.key === 'ArrowRight') state.opened ? flipTo(state.index + 1) : openBook();
     if (e.key === 'ArrowLeft') flipTo(state.index - 1);
   });
   // 手機輕掃翻頁：觸控開始與結束的水平距離大於 55px 時切換。
   let touchX = null;
   const shell = $('bookShell');
-  shell.addEventListener('touchstart', e => { touchX = e.target.closest('.panorama-page') ? null : e.changedTouches[0].clientX; }, {passive:true});
+  shell.addEventListener('touchstart', e => { touchX = e.target.closest('.panorama-page, [data-gallery]') ? null : e.changedTouches[0].clientX; }, {passive:true});
   shell.addEventListener('touchend', e => {
     if (touchX === null || !state.opened) return;
     const delta = e.changedTouches[0].clientX - touchX;

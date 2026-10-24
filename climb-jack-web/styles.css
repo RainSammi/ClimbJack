@@ -240,3 +240,31 @@ select {
 body * {
   font-family: 'Cubic11', sans-serif;
 }
+/* 章節插圖輪播：支援 PNG、GIF 與觸控滑動 */
+.gallery-artwork { position:relative; touch-action:pan-y; user-select:none; min-height:210px; }
+.gallery-artwork .gallery-image { display:none; position:absolute; inset:0; width:100%; height:100%; object-fit:contain; background:rgba(255,250,234,.55); pointer-events:none; }
+.gallery-artwork .gallery-image.is-active { display:block; }
+.gallery-artwork .gallery-image.gallery-missing { visibility:hidden; }
+.gallery-artwork.gallery-pixel .gallery-image { image-rendering:pixelated; object-fit:contain; padding:18px; }
+.gallery-artwork .gallery-arrow { position:absolute; z-index:3; top:50%; transform:translateY(-50%); height:42px; width:36px; border:2px solid #799166; color:#47663e; background:rgba(255,250,229,.94); border-radius:9px; font-size:29px; line-height:1; display:grid; place-items:center; }
+.gallery-artwork .gallery-arrow:hover { background:#deebc9; }
+.gallery-artwork .gallery-prev {left:9px;}.gallery-artwork .gallery-next {right:9px;}
+.gallery-artwork .gallery-counter {position:absolute; z-index:3; bottom:8px; left:50%; transform:translateX(-50%); padding:5px 10px; background:rgba(255,250,229,.92); border-radius:18px; color:#4f6743; font-size:11px; white-space:nowrap; }
+/* 限量星光裝飾，不遮擋文字與按鈕 */
+.page:not(.panorama-page):not(.left)::after {content:'';pointer-events:none;position:absolute;right:15px;top:12px;width:26px;height:26px;background:url('assets/sparkle.gif') center / contain no-repeat;opacity:.75;}
+.book-cover::after {content:'';pointer-events:none;position:absolute;right:11%;top:16%;width:45px;height:45px;background:url('assets/sparkle.gif') center / contain no-repeat;}
+@media(max-width:560px) { .gallery-artwork{min-height:130px;} .gallery-artwork .gallery-arrow{width:27px;height:34px;font-size:23px;} .gallery-artwork .gallery-prev{left:2px;} .gallery-artwork .gallery-next{right:2px;} .gallery-artwork .gallery-counter{font-size:9px;padding:3px 6px;} }
+
+/* 封面提示修正：開書前不渲染可見的內頁，避免預覽動畫露出第一張圖片。 */
+.book:not(.open) .book-pages { visibility: hidden; }
+/* 舊 rewind 會 rotateY 掀開封面，現改為不露出背面的柔和提示。 */
+.book .book-cover.rewind {
+  animation: coverReadyHint 1.25s ease-in-out 1 both;
+}
+@keyframes coverReadyHint {
+  0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
+  45% { transform: translateY(-5px) scale(1.012); filter: brightness(1.12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .book .book-cover.rewind { animation: none; }
+}

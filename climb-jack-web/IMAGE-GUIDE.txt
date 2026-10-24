@@ -1,4 +1,10 @@
-已放入：intro-cutscene.png 過場圖；village-scene.png 村莊；jack-idle.gif 傑克角色；world-beanstalk.png 藤蔓插畫。
-尚待補：gameplay 正式遊玩截圖；development 開發截圖。
-圖片路徑請在 content.js 的 image 欄位編輯。
-團隊分工參考企劃書簡化，請公開前確認。
+圖片與動畫更換指南
+3-1.png / 3-2.png / 3-3.png：玩法輪播
+5-1.png / 5-2.png：關卡場景輪播
+6-1.png / 6-2.png：製作過程輪播
+assets/gif/jack/：人物 GIF 輪播（7 個）
+assets/gif/monster/：怪物 GIF 輪播（3 個）
+assets/sparkle.gif：封面和右頁裝飾
+
+在 content.js 的 images 陣列新增或刪除路徑，即可調整輪播張數及順序。
+注意：整本書左右翻頁使用書本下方的箭頭；書頁內的小箭頭切換圖片。
