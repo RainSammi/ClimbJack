@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#faf5d9" />
+  <title>Climb! Jack!|傑克與魔豆</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+    <section class="start-screen" id="startScreen" aria-label="開始畫面">
+      <div class="start-decoration" aria-hidden="true">✦ · ✧ · ✦</div>
+      <button class="start-button" id="startButton">START <span>開始冒險</span></button>
+      <p class="start-caption">Climb Jack!</p>
+    </section>
+
+    <div class="world" id="world" aria-hidden="true">
+      <svg class="vine-scene" viewBox="0 0 1200 800" preserveAspectRatio="none" aria-hidden="true">
+        <path class="vine-trunk" d="M 594 812 C 546 710, 656 628, 593 535 S 550 400, 603 301 S 578 150, 604 94" />
+        <path class="vine-branch vine-branch-left" d="M 604 94 C 490 94, 342 94, 185 94 S 85 94, 16 94" />
+        <path class="vine-branch vine-branch-right" d="M 604 94 C 733 94, 870 94, 1030 94 S 1135 94, 1184 94" />
+        <g class="leaves">
+          <ellipse cx="569" cy="692" rx="42" ry="17" transform="rotate(-40 569 692)"/>
+          <ellipse cx="628" cy="576" rx="44" ry="18" transform="rotate(35 628 576)"/>
+          <ellipse cx="553" cy="455" rx="36" ry="16" transform="rotate(-32 553 455)"/>
+          <ellipse cx="637" cy="360" rx="39" ry="16" transform="rotate(32 637 360)"/>
+          <ellipse cx="572" cy="231" rx="32" ry="14" transform="rotate(-35 572 231)"/>
+          <ellipse cx="655" cy="125" rx="38" ry="15" transform="rotate(28 655 125)"/>
+        </g>
+      </svg>
+    </div>
+
+    <header class="top-nav" id="topNav">
+      <a href="#" class="logo" id="homeLink" aria-label="回到封面"><img class="logo-image" src="assets/logo.png" alt="Climb! Jack!" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="logo-fallback" hidden>Climb! <b>Jack!</b></span></a>
+      <nav id="navLinks" aria-label="書本章節快捷選單"></nav>
+      <button class="menu-toggle" id="menuToggle" aria-label="開啟選單" aria-expanded="false">☰</button>
+    </header>
+
+    <main class="story-stage" id="storyStage" aria-label="互動童話書">
+      <p class="story-kicker" id="storyKicker">ONCE UPON A TIME...</p>
+      <div class="book-shell" id="bookShell">
+        <div class="book" id="book">
+          <div class="book-spine" aria-hidden="true"></div>
+          <div class="book-pages" id="bookPages" aria-live="polite"></div>
+          <div class="book-cover" id="bookCover">
+            <span class="cover-corner corner-tl">✦</span><span class="cover-corner corner-tr">✦</span>
+            <div class="cover-icon"><img src="assets/cover-icon.png" alt="封面圖示"></div>
+            <h1 class="cover-logo-title"><img src="assets/logo.png" alt="Climb! Jack! 傑克與魔豆" class="cover-title-logo"></h1>
+            <span class="cover-corner corner-bl">✦</span><span class="cover-corner corner-br">✦</span>
+          </div>
+          <div class="turn-sheet" id="turnSheet" aria-hidden="true"><div class="sheet-front"></div><div class="sheet-back"></div></div>
+        </div>
+      </div>
+      <div class="reader-controls" id="readerControls">
+        <button id="prevButton" class="page-arrow" aria-label="上一頁">← <span>上一頁</span></button>
+        <div class="page-indicator" id="pageIndicator"></div>
+        <button id="nextButton" class="page-arrow" aria-label="下一頁"><span>下一頁</span> →</button>
+      </div>
+      <p class="hint" id="hint" hidden>點擊箭頭翻頁，或使用鍵盤 ← →</p>
+    </main>
+    <footer class="site-footer">© Climb! Jack! Graduation Project · Demo</footer>
+  </div>
+  <script src="content.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
